@@ -26,7 +26,7 @@ NOTE: For the last task, we did not correct tags manually for both texts due to 
 
 
 
-# References and sources used
+# References and sources used throughout the assignment
 1. Dras, M., 2023, COMP8240/COMP7860: Applications of Data Science, Assessed Task 1.
 2. OpenAI. (2023). ChatGPT (August 3 version) [Large language model]. https://chat.openai.com/
 3. reference accuracy, recall and F1 score info.
