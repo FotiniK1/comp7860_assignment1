@@ -25,13 +25,14 @@ NOTE: For the last task, we did not correct tags manually for both texts due to 
 
 
 # References and sources used throughout the assignment
-1. Dras, M., 2023, COMP8240/COMP7860: Applications of Data Science, Assessed Task 1, Semester 2, 2023, Macquarie University.
+1. Dras, M., 2023, COMP8240/COMP7860: Applications of Data Science, Assessed Task 1, Semester 2, 2023, Macquarie University, NSW, Australia.
 2. OpenAI. (2023). ChatGPT (August 3 version) [Large language model]. https://chat.openai.com/
 3. Stanford NLP NER Results: https://nlp.stanford.edu/projects/project-ner.shtml
 4. Precision, Recall and F1 score:
-   - 'Precision and recall', 2023, Wikipedia, wiki article, viewed 16 September 2023, https://en.wikipedia.org/wiki/Precision_and_recall
    - C3.ai, 'Precision', viewed 16 September 2023, https://c3.ai/glossary/machine-learning/precision/
    - C3.ai, 'Recall', viewed 16 September 2023, https://c3.ai/glossary/data-science/recall/
-   - 'Machine Learning Foundations', Institute of Applied Technologies, week 4 course material.
-   - V7, 'F1 Score in Machine Learning: Intro & Calculation', viewed 16 September 2023, https://www.v7labs.com/blog/f1-score-guide
    - 'F-score', 2023, Wikipedia, wiki article, viewed 16 September 2023, https://en.wikipedia.org/wiki/F-score
+   - 'Machine Learning Foundations', week 4 course material, June - July 2023, Institute of Applied Technologies, NSW, Australia.
+   - 'Precision and recall', 2023, Wikipedia, wiki article, viewed 16 September 2023, https://en.wikipedia.org/wiki/Precision_and_recall
+   - V7, 'F1 Score in Machine Learning: Intro & Calculation', viewed 16 September 2023, https://www.v7labs.com/blog/f1-score-guide
+  
