@@ -32,7 +32,7 @@ NOTE: For the last task, we did not correct tags manually for both texts due to 
    - C3.ai, 'Precision', viewed 16 September 2023, https://c3.ai/glossary/machine-learning/precision/
    - C3.ai, 'Recall', viewed 16 September 2023, https://c3.ai/glossary/data-science/recall/
    - 'F-score', 2023, Wikipedia, wiki article, viewed 16 September 2023, https://en.wikipedia.org/wiki/F-score
-   - 'Machine Learning Foundations', week 4 course material, June - July 2023, Institute of Applied Technologies, NSW, Australia.
+   - 'Machine Learning Foundations', week 4 course material, June - July 2023, Institute of Applied Technology (Digital), NSW, Australia.
    - 'Precision and recall', 2023, Wikipedia, wiki article, viewed 16 September 2023, https://en.wikipedia.org/wiki/Precision_and_recall
    - V7, 'F1 Score in Machine Learning: Intro & Calculation', viewed 16 September 2023, https://www.v7labs.com/blog/f1-score-guide
   
