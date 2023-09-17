@@ -1,0 +1,131 @@
+Here we discuss what precision, recall and F1-score are, and compare the metrics for the wikipedia and fanwiki texts as well as the metrics from the fixed NER files.
+There is also a comparison of the results with the Stanford NLP NER Benchmark Results (JPG image uploaded on GitHub). For the comparison with the benchmark results we use the values of the last three rows of the table. The reason for that is that those rows refer to models regarding the english language, which is where our texts belong.
+All metric results from our model are shown at the end of the discussion for convenience.
+
+
+
+==================== DEFINITIONS ==========================
+
+
+
+Precision
+---------
+
+Precision (also called 'positive predictive value' - PPV) is one of the indicators of a model's performance. It shows the quality of positive predictions made by the model. It is calculated by taking the ratio of the number of True Positives over the total number of positive predictions (True Positives + True Negatives). 
+
+	Precision = TP/(TP + TN)
+
+It ranges between 0 and 1, which can be translated into a percentage (with 1 being the best value). Precision cannot be used by itself when performing classification tasks. If, for example, a classification task yields a precision score of 1.0 for a class Z, it means that every item labelled as belonging to that class does indeed belong there. However, it does not does not account for the number of items from class Z that were labelled incorrectly. For this reason, we also use recall.
+
+
+
+Recall
+------
+
+Recall (also called 'sensitivity') is a classification metric that indicates how many of the actual positive instances were correctly classified. It is calculated by taking the ratio of the number of True Positives by the total number of elements that actually belong to the positive class (True Positives + False Negatives).
+
+	Recall = TP/(TP + FN)
+
+Similarly to precision, it ranges between 0 and 1, with 1 being the best possible value. It is used in conjunction to precision, to give us a better understanding of the model's performance. The reason for this is that, a recall of 1.0 may indicate that every item from class Z was labelled as belonging to class Z. However, it does not account for items from other classes that were mislabelled as class Z.
+
+
+
+F1-Score
+--------
+
+A third classification metric that can be used to determine the performance of a model if the F1-score. It is also known as the harmonic mean of precision and recall, as it symmetrically combines the two metrics.
+
+	F1-score = 2 x Precision x Recall / (Precision + Recall)
+
+As with the previous two metrics, it ranges between 0 and 1, with 1 being the best score. Precision and recall have an inverse relationship, meaning that when one increases the other decreases. The best possible result will be to have maximum values for both precision and recall. This is where the F1-score comes in, as it combines the two metrics. Maximising the F1-score means that both precision and recall are maximised simultaneously. 
+
+
+
+
+
+==================== DISCUSSION - FIRST EVALUATION ==========================
+
+Here we compare the results of the first evaluation task. This was run on our wikipedia and fanwiki files, after they were manually corrected. The evaluation produced the wikipedia-eval.txt and fanwiki-eval.txt files.
+
+By comparing the two files we see that the classifier performed best on the Wikipedia text. The Wikipedia precision, recall and F1 scores are between 75-93%, 55-91% and 63-92%, respectively, with PERSON being the best predicted class of the three across all metrics, followed by LOCATION and, finally, ORGANIZATION. The low score for the ORGANIZATION class is possibly due to the high number of False Negative (FN) predictions. From our manual tagging we noticed that many organisations were not labelled correctly by the model, as it failed to recognise certain organisations, such as 'Emmys.com', affecting the recall metric for that class and, by extension, the F1-score. 
+
+Conversely, the model performed poorly on the Fanwiki text. We notice that, during our manual classification, we labelled a word incorrectly (PESON instead of PERSON). However, it does not seem to affect the results as it is only one instance. Therefore, we will not include it into our discussion. The Fanwiki precision, recal and F1 scores are between 14-85%, 27-67% and 19-46%, respectively. ORGANIZATION was the class that had the lowest scores overall. This may be due to the topic of the text, as it is about fictional characters in a fictional world, thus resulting in the model's possible failure to recognise such entities, especially if it wasn't trained on similar texts. The LOCATION class has a higher recall than precision, indicating that the model was able to correctly predict a relatively high number of the TP instances but, at the same time, predicting a high number of FP as well. However, the number of LOCATION instances is very small (a total of 7), which may also be affecting this result. The precision for the PERSON class, is higher than its recall value. This shows that most instaces that were predicted as PERSON, did indeed belong to that class. However, the low recall indicates that there is a very large number of instances that were predicted to belong in a different class. As we were correcting the tags, we noticed that many names were incorrectly labelled as '/O'. This mainly included god names, or characters that did not come up in the text as often. As mentioned earlier, we believe this may be due to the topic of the text being about fictional characters and places.
+
+Comparing the two texts with the benchmark results:
+The precision, recall and F1 scores for the benchmark results are between 88-94%, 87-93% and 87-93%, respectively. There is a small overlap between the benchmark values and the Wikipedia values, confirming that our model performed relatively well on the Wikipedia text. In contrast, there is no overlap between the benchmark and Fanwiki values, showing how poorly the classification was done. The difference in values may be due to the size of the texts, as the benchmark models were trained with over 200,000 word tokens. The larger dataset allows for better training of the models, resulting in a higher overall performance. A larger dataset related to similar topics of the Fanwiki website (e.g., downloading pages of other characters of the same anime), will most likely result in greater performance of the model. Another possible reason for the lower metric values for our texts may be the tagging of punctuation marks as one of the three classes (PERSON, ORGANIZATION, LOCATION), when it should not be the case. This would greatly affect our results, as we will see from the second evaluation task.
+
+
+
+
+
+==================== DISCUSSION - SECOND EVALUATION ==========================
+
+Here we compare the results between the first and second evaluation tasks. The second evaluation was done on our wikipedia and fanwiki files, after the fixed NER Python script was run. The evaluation produced the fixed-wikipedia-eval.txt and fixed-fanwiki-eval.txt files. We did not do a manual tag correction for the input files, except for minor changes in the Wikipedia text. The fixed NER script was created to "force" the tagging of punctuation marks to always be '/O'. 
+
+By comparing the results for the Wikipedia file, we see that the second evaluation has yielded higher scores for precision, recall and F1, with values between 88-100%, 97-100% and 93-99%, respectively. The total number of FP and FN has been reduced dramatically (from 26 to 8, and from 42 to 2), meaning that more TP instances have been predicted correctly. The change is even more dramatic for the Fanwiki file with precision, recall and F1 scores increasing to 83-100%, 83-98% and 83-99%, respectively. The total number of FP and FN has decreased extremely (from 47 to 8, and from 187 to 4!), also confirming that the new script has resulted in a better performing model.
+
+Comparing the two texts with the benchmark results:
+The Wikipedia text appears to have relatively higher score values, for some of the classes, compared to the benchmark. We are not sure whether or not that is a valid result for two reasons. First, models are usually not 100% accurate and second the benchmark results come from a much larger dataset, which would lead to better trained and more accurate models. There is a large overlap between the metric values of the Fanwiki page and the benchmark values, indicating that the misclassification of punctuation marks was greatly affecting our initial evaluation results.
+
+
+
+
+
+==================== RESULTS ==========================
+
+
+
+---WIKIPEDIA-EVAL.TXT---
+
+CRFClassifier tagged 3486 words in 1 documents at 4469.23 words per second.
+         Entity P       R       F1      TP      FP      FN
+       LOCATION 0.8077  0.8750  0.8400  21      5       3
+   ORGANIZATION 0.7500  0.5510  0.6353  27      9       22
+         PERSON 0.9281  0.9012  0.9145  155     12      17
+         Totals 0.8865  0.8286  0.8565  203     26      42
+
+
+
+---FANWIKI-EVAL.TXT---
+
+CRFClassifier tagged 4459 words in 1 documents at 5437.80 words per second.
+         Entity P       R       F1      TP      FP      FN
+       LOCATION 0.3333  0.6667  0.4444  2       4       1
+   ORGANIZATION 0.1471  0.2778  0.1923  5       29      13
+         PERSON 0.8462  0.3092  0.4529  77      14      172
+          PESON 0.0000  0.0000  0.0000  0       0       1
+         Totals 0.6412  0.3100  0.4179  84      47      187
+
+
+
+---FIXED-WIKIPEDIA-EVAL.TXT---
+
+CRFClassifier tagged 3475 words in 1 documents at 4806.36 words per second.
+         Entity P       R       F1      TP      FP      FN
+       LOCATION 0.8846  1.0000  0.9388  23      3       0
+   ORGANIZATION 1.0000  0.9737  0.9867  37      0       1
+         PERSON 0.9701  0.9939  0.9818  162     5       1
+         Totals 0.9652  0.9911  0.9780  222     8       2
+
+---FIXED-FANWIKI-EVAL.TXT---
+
+CRFClassifier tagged 4453 words in 1 documents at 5214.29 words per second.
+         Entity P       R       F1      TP      FP      FN
+       LOCATION 0.8333  0.8333  0.8333  5       1       1
+   ORGANIZATION 1.0000  0.9706  0.9851  33      0       1
+         PERSON 0.9222  0.9765  0.9486  83      7       2
+         Totals 0.9380  0.9680  0.9528  121     8       4
+
+
+
+
+
+
+
+
+
+
+
+
+
+
