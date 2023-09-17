@@ -1,5 +1,5 @@
 # comp7860_assignment1
-Repositoty for Assignment 1 of COMP7860. Here we submit all input and output files, scripts, results and discussion files.
+This is the repositoty for Assignment 1 of COMP7860. Here we submit all input and output files, scripts, results and discussion files.
 
 
 For this assignment we work with code that does Named Entity Recognition (NER). In summary, we gather text from two webpages, apply the Stanford NER system on that text and, after some processing, evaluate its performance.
